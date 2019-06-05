@@ -1,0 +1,35 @@
+<!--
+  Generated template for the ExtrasPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Select your Extras</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<h1>Extras Page</h1>
+<div text-justify>
+<p> You can choose one or more of the delicious extras below. Your selection will be updated if you change your mind. You can always come back to this page again and make a different selection. When you make your selection press the home button to return.</p>
+</div>
+<ion-list inset>
+
+
+<ion-item [ngClass]="{extraChoosen: theOrder.isExtraSelectedByUser(extOption)}" *ngFor="let extOption of theOrder.getPizzaExtraOptions(); let i = index">
+	<ion-label><b>{{extOption.extraName}}</b>
+		<br/>Calories: {{extOption.calories}}
+		<br/>Price: €{{extOption.price}}
+	</ion-label>
+	<ion-checkbox [checked] = "theOrder.isExtraSelectedByUser(extOption)" (ionChange)="theOrder.addExtras(extOption)"></ion-checkbox>
+</ion-item>
+</ion-list>
+
+
+<button ion-button full color = "danger" (click)="goToHome()">Home</button>
+</ion-content>

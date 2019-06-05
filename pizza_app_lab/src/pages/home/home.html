@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      CS385 Pizza Builder
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<div text-justify>
+	
+	<p>
+Welcome <b> {{theOrder.getUserId()}} </b> to the CS385 Build Your Pizza Application. We've made the application very easy to use. The navigation buttons below should help you build your perfect pizza in minutes. When you're finished just submit your order to us and you're ready to go! 
+</p>
+</div>
+
+<br/><br/>
+
+<button ion-button full round  color = "danger" (click)="goToChooseBase()">Pizza Base</button>
+
+<button ion-button  full round  color = "warning" (click)="goToToppings()">Pizza Toppings</button>
+
+
+<button ion-button  full round  color = "dark" (click)="goToExtras()">Pizza Sides/Extras</button>
+
+
+<button ion-button full  round  color = "secondary" (click)="goToMyOrderPage()">My Pizza Order</button>
+
+<button ion-button full  round color = "dark" (click)="goToStartOver()">Start Again!</button>
+
+</ion-content>

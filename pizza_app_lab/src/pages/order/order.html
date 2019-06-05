@@ -1,0 +1,102 @@
+<!--
+  Generated template for the OrderPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Your current Pizza Order</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<h1>What does your Pizza look like?</h1>
+<div text-justify text-wrap>
+<p>Here is what your pizza looks like so far! Remember you can go back and change your base or your toppings (or extras later). Or you can just decide that you're ready to order! It's up to you.  </p>
+</div>	
+
+
+<h2>Current Pizza Base Type</h2>
+<div text-justify>
+	The following is your choice of base (one choice only): 
+</div>
+
+<ion-item *ngIf="theOrder.getUserSelectedBase().length == 0">
+	<ion-icon name="alert"></ion-icon>
+	<div text-justify text-wrap>
+	Don't forget to choose a base - you'll need one of those!
+	</div>
+</ion-item>
+
+<ion-list inset>
+  <ion-item *ngFor="let base of theOrder.getUserSelectedBase()"> 
+   <b>Base: [{{base.baseName}}]</b> €{{base.price}}
+	<ion-icon name="trash" (click)="deleteThisBaseChoice()"></ion-icon>
+  </ion-item>
+</ion-list>	
+
+
+
+
+
+
+<h2>Current Pizza Toppings</h2>
+<div text-justify text-wrap>
+Your current toppings are as follows:
+</div>
+
+<ion-item *ngIf="theOrder.getUserSelectedToppings().length == 0">
+	<ion-icon name="alert"></ion-icon>
+	<div text-justify text-wrap>
+	Don't forget to choose some toppings - a pizza isn't a pizza without toppings!
+	</div>
+</ion-item>
+
+
+<ion-list inset>
+  <ion-item  *ngFor="let topping of theOrder.getUserSelectedToppings(); let i = index">
+    <ion-icon name="pizza" item-start></ion-icon>
+    <ion-label>{{i+1}}: <b>{{topping.toppingName}}</b> €{{topping.price}}&nbsp;&nbsp;  
+    <ion-icon name="trash" (click)="deleteThisTopping(topping)"></ion-icon>
+</ion-label>
+   </ion-item>
+ </ion-list> 
+
+<h2>Current Pizza Extras/Sides</h2>
+<div text-justify text-wrap>
+Your current extras/sides are as follows: <br/>
+<b>TO BE ADDED LATER</b>
+</div>
+
+<ion-item *ngIf="theOrder.getUserSelectedSidesExtras().length == 0">
+	<ion-icon name="alert"></ion-icon>
+	<div text-justify text-wrap>
+	Don't forget to choose some sides or extras - a pizza isn't a pizza without something to go with it! We recommend the onion rings and some dips!
+	</div>
+</ion-item>
+
+<ion-list inset>
+  <ion-item  *ngFor="let extra of theOrder.getUserSelectedSidesExtras(); let i = index">
+    <ion-icon name="pizza" item-start></ion-icon>
+    <ion-label>{{i+1}}: <b>{{extra.extraName}}</b> €{{extra.price}}&nbsp;&nbsp;  
+    <ion-icon name="trash" (click)="deleteThisExtra(extra)"></ion-icon>
+</ion-label>
+   </ion-item>
+ </ion-list> 
+
+
+<h1 ion-text color="primary">Total Order Cost: 
+<ion-icon name="pricetags"></ion-icon> €{{theOrder.calculateTotalPriceOfCurrentOrder()}}	
+</h1>
+  
+
+<button ion-button full round  color = "secondary" (click)="goToHome()">Home</button>
+<button ion-button full round  color = "danger" (click)="goToChooseBase()">Pizza Base</button>
+<button ion-button  full round  color = "warning" (click)="goToToppings()">Pizza Toppings</button>
+<button ion-button  full round  color = "light" (click)="goToExtras()">Pizza Sides/Extras</button>
+
+</ion-content>

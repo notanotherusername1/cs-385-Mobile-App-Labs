@@ -1,0 +1,37 @@
+<!--
+  Generated template for the PzbasePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Choose your Pizza Base</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<h1>Choose (ONE) from our pizza bases below</h1>
+<div text-justify>
+<p>You can choose any one of the delicious pizza bases below for your pizza. Your selection will be updated if you change your mind. </p>
+</div>	
+
+
+<ion-list  radio-group>
+  <ion-item  [ngClass]="{baseChosen: theOrder.getBase() == bOption}" 
+  *ngFor="let bOption of theOrder.getPizzaBaseOptions(); let i = index">
+    <ion-label>
+    	<ion-icon name="pizza" item-start></ion-icon>
+    Option {{i+1}}: <b>{{bOption.baseName}}</b> <br/>Price: €{{bOption.price}}
+    </ion-label>
+    <ion-radio (click)="chooseThisBase(bOption)"></ion-radio>
+   </ion-item>
+</ion-list> 
+
+
+<button ion-button full color = "danger" (click)="goToHome()">Home</button>
+
+</ion-content>
